@@ -1,0 +1,13 @@
+{
+  "itemGroup.cavernouslite": "Example Mod Tab",
+  "block.cavernouslite.example_block": "Example Block",
+  "item.cavernouslite.example_item": "Example Item",
+
+  "cavernouslite.configuration.title": "Cavernous Lite Configs",
+  "cavernouslite.configuration.section.cavernouslite.common.toml": "Cavernous Lite Configs",
+  "cavernouslite.configuration.section.cavernouslite.common.toml.title": "Cavernous Lite Configs",
+  "cavernouslite.configuration.items": "Item List",
+  "cavernouslite.configuration.logDirtBlock": "Log Dirt Block",
+  "cavernouslite.configuration.magicNumberIntroduction": "Magic Number Text",
+  "cavernouslite.configuration.magicNumber": "Magic Number"
+}
