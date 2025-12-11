@@ -1,7 +1,9 @@
 package com.thxlotl.cavernouslite.worldgen.features;
 
 import com.thxlotl.cavernouslite.CavernousLite;
-import com.thxlotl.cavernouslite.worldgen.features.placed.FungalCavesPlacedFeatures;
+import com.thxlotl.cavernouslite.util.OrePlacedFeatureTypes;
+import com.thxlotl.cavernouslite.worldgen.features.config.IcyCavesConfiguredFeatures;
+import com.thxlotl.cavernouslite.worldgen.features.placed.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -20,6 +22,11 @@ public class ModPlacedFeatures {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         FungalCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        VolcanicCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        CrystalCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        AridCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        IcyCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        OrePlacedFeatures.bootstrap(context, configuredFeatures);
     }
 
 
@@ -30,5 +37,9 @@ public class ModPlacedFeatures {
                                  Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
-
+    public static ResourceKey<PlacedFeature> oreKey(String prefix, OrePlacedFeatureTypes oreType)
+    {
+        String suffix = oreType.toString().toLowerCase();
+        return registerKey(prefix + "_ore_" + suffix);
+    }
 }

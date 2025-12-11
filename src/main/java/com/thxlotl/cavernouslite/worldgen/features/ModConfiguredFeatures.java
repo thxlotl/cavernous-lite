@@ -1,7 +1,8 @@
 package com.thxlotl.cavernouslite.worldgen.features;
 
 import com.thxlotl.cavernouslite.CavernousLite;
-import com.thxlotl.cavernouslite.worldgen.features.config.FungalCavesConfiguredFeatures;
+import com.thxlotl.cavernouslite.util.OreFeatureTypes;
+import com.thxlotl.cavernouslite.worldgen.features.config.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -17,6 +18,11 @@ public class ModConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         FungalCavesConfiguredFeatures.bootstrap(context, holdergetter);
+        VolcanicCavesConfiguredFeatures.bootstrap(context);
+        CrystalCavesConfiguredFeatures.bootstrap(context);
+        AridCavesConfiguredFeatures.bootstrap(context);
+        IcyCavesConfiguredFeatures.bootstrap(context);
+        OreConfiguredFeatures.bootstrap(context);
     }
 
 
@@ -26,6 +32,12 @@ public class ModConfiguredFeatures {
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register
             (BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
+    }
+
+    public static ResourceKey<ConfiguredFeature<?, ?>> oreKey(String prefix, OreFeatureTypes oreType)
+    {
+        String suffix = oreType.toString().toLowerCase();
+        return registerKey(prefix + "_ore_" + suffix);
     }
 
 }

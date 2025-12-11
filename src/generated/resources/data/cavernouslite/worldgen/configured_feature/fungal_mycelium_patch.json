@@ -15,7 +15,7 @@
     },
     "replaceable": "#cavernouslite:mycelium",
     "surface": "floor",
-    "vegetation_chance": 0.5,
+    "vegetation_chance": 0.1,
     "vegetation_feature": {
       "feature": "cavernouslite:fungal_mycelium_vegetation",
       "placement": [

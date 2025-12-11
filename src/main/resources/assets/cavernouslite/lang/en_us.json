@@ -9,5 +9,8 @@
   "cavernouslite.configuration.items": "Item List",
   "cavernouslite.configuration.logDirtBlock": "Log Dirt Block",
   "cavernouslite.configuration.magicNumberIntroduction": "Magic Number Text",
-  "cavernouslite.configuration.magicNumber": "Magic Number"
+  "cavernouslite.configuration.magicNumber": "Magic Number",
+
+  "biome.cavernouslite.fungal_caves": "Fungal Caves",
+  "biome.cavernouslite.volcanic_caves": "Volcanic Caves"
 }

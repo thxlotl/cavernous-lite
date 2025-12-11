@@ -1,5 +1,6 @@
 package com.thxlotl.cavernouslite.util;
 
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -7,19 +8,28 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+
+import java.util.List;
 
 public class CFeatureUtil {
 
@@ -55,4 +65,62 @@ public class CFeatureUtil {
                 0.75f);
     }
 
+    public static TreeConfiguration createForkingMushroom(Block capBlock) {
+
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                SimpleStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()),
+                new ForkingTrunkPlacer(3, 2, 3),
+                SimpleStateProvider.simple(capBlock.defaultBlockState()),
+                new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )
+                .decorators(List.of(
+                        new AttachedToLeavesDecorator(
+                                1,
+                                0,
+                                0,
+                                SimpleStateProvider.simple(Blocks.MOSS_CARPET.defaultBlockState()),
+                                1,
+                                List.of(Direction.UP)
+                        ),
+                        new LeaveVineDecorator(0.25f)
+                ))
+                .ignoreVines()
+                .build();
+    }
+
+    public static TreeConfiguration createCherryTrunkMushroom(Block capBlock) {
+
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                SimpleStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()),
+                new CherryTrunkPlacer(
+                        6, 2, 3,
+                        new WeightedListInt(
+                                WeightedList.<IntProvider>builder()
+                                        .add(ConstantInt.of(2), 2)
+                                        .add(ConstantInt.of(3), 5)
+                                        .build()
+                        ),
+                        BiasedToBottomInt.of(3, 5),
+                        UniformInt.of(-6, -5),
+                        UniformInt.of(-2, 0)
+                ),
+                SimpleStateProvider.simple(capBlock.defaultBlockState()),
+                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )
+                .decorators(List.of(
+                        new AttachedToLeavesDecorator(
+                                1,
+                                0,
+                                0,
+                                SimpleStateProvider.simple(Blocks.MOSS_CARPET.defaultBlockState()),
+                                1,
+                                List.of(Direction.UP)
+                        ),
+                        new LeaveVineDecorator(0.25f)
+                ))
+                .ignoreVines()
+                .build();
+    }
 }

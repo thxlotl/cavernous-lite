@@ -1,3 +1,8 @@
-// 1.21.10	2025-12-09T13:41:56.4232724	Tags for minecraft:block mod id cavernouslite
+// 1.21.10	2025-12-11T15:54:50.5180477	Tags for minecraft:block mod id cavernouslite
+142370368e43b7d4da321528401df987a6ce35d4 data/cavernouslite/tags/block/amethyst.json
+69bde21a5ac8ec3debe59dd4660b8fb8009c183a data/cavernouslite/tags/block/deepslate_ore_replaceable_underground.json
+f0f92c5f0b5c5412980a4ca8436b4cb180919deb data/cavernouslite/tags/block/magma.json
 158a4877fad0ee79d00e8c9f641ad661e822cdb5 data/cavernouslite/tags/block/moss_block.json
 f90b8e6674252583fae1583255b371b3c95c36d5 data/cavernouslite/tags/block/mycelium.json
+a8dae7d2b886822346f3058224af8290dcacc927 data/cavernouslite/tags/block/stone_ore_replaceable_underground.json
+953d952f2581fc571b1a6bde3095facad1b7114a data/minecraft/tags/block/overworld_carver_replaceables.json

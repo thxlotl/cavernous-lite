@@ -10,10 +10,19 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 public class ModNoises {
 
     public static final ResourceKey<NormalNoise.NoiseParameters> FUNGAL_SURFACE = createKey("fungal_surface");
+    public static final ResourceKey<NormalNoise.NoiseParameters> VOLCANIC = createKey("volcanic");
+    public static final ResourceKey<NormalNoise.NoiseParameters> STRIPEY = createKey("stripey");
+    public static final ResourceKey<NormalNoise.NoiseParameters> SCATTERED = createKey("scattered");
 
     public static void bootstrap(BootstrapContext<NormalNoise.NoiseParameters> context) {
         register(context, FUNGAL_SURFACE, -6,
                 2, 2, 4);
+        register(context, VOLCANIC, -5,
+                1, 2, 1);
+        register(context, STRIPEY, -6,
+                1.1, 1);
+        register(context, SCATTERED, -6,
+                1.5, 1, 1, 2.5);
     }
 
 
