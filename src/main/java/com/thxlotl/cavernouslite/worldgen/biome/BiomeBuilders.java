@@ -294,7 +294,6 @@ public class BiomeBuilders {
     }
 
     public static Biome icyCaves(BootstrapContext<Biome> context) {
-
         // Build mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         caveSpawns(spawnBuilder);
@@ -324,6 +323,41 @@ public class BiomeBuilders {
                         .fogColor(12638463)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES)).build())
+                .build();
+    }
+
+    public static Biome buriedJungle(BootstrapContext<Biome> context) {
+        // Build mob spawns
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        caveSpawns(spawnBuilder);
+
+        // Build feature generation
+        BiomeGenerationSettings.Builder biomeBuilder =
+                new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        // Default features
+        globalOverworldGeneration(biomeBuilder);
+        addUndergroundOres(biomeBuilder);
+
+
+
+        // Biome characteristics
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .downfall(0.9f)
+                .temperature(0.8f)
+                .generationSettings(biomeBuilder.build())
+                .mobSpawnSettings(spawnBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.002f))
+                        .waterColor(5883291)
+                        .waterFogColor(340786)
+                        .skyColor(8103167)
+                        .fogColor(12638463)
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
                 .build();
     }
 }

@@ -17,7 +17,7 @@ public class ModBiomes {
     public static final ResourceKey<Biome> MARBLED_CAVES = createBiomeKey("marbled_caves");
     public static final ResourceKey<Biome> ARID_CAVES = createBiomeKey("arid_caves");
     public static final ResourceKey<Biome> ICY_CAVES = createBiomeKey("icy_caves");
-    public static final ResourceKey<Biome> TROPICAL_CAVES = createBiomeKey("tropical_caves");
+    public static final ResourceKey<Biome> BURIED_JUNGLE = createBiomeKey("buried_jungle");
 
     private static ResourceKey<Biome> createBiomeKey(String name) {
         return ResourceKey.create(Registries.BIOME,
