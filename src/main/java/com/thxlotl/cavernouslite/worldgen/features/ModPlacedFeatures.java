@@ -26,6 +26,7 @@ public class ModPlacedFeatures {
         CrystalCavesPlacedFeatures.bootstrap(context, configuredFeatures);
         AridCavesPlacedFeatures.bootstrap(context, configuredFeatures);
         IcyCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        BuriedJunglePlacedFeatures.bootstrap(context, configuredFeatures);
         OrePlacedFeatures.bootstrap(context, configuredFeatures);
     }
 

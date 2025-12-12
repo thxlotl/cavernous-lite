@@ -17,7 +17,7 @@ public class ModBiomes {
     public static final ResourceKey<Biome> MARBLED_CAVES = createBiomeKey("marbled_caves");
     public static final ResourceKey<Biome> ARID_CAVES = createBiomeKey("arid_caves");
     public static final ResourceKey<Biome> ICY_CAVES = createBiomeKey("icy_caves");
-    public static final ResourceKey<Biome> TROPICAL_CAVES = createBiomeKey("tropical_caves");
+    public static final ResourceKey<Biome> BURIED_JUNGLE = createBiomeKey("buried_jungle");
 
     private static ResourceKey<Biome> createBiomeKey(String name) {
         return ResourceKey.create(Registries.BIOME,
@@ -33,5 +33,6 @@ public class ModBiomes {
         context.register(MARBLED_CAVES, BiomeBuilders.basicCave(context));
         context.register(ARID_CAVES, BiomeBuilders.aridCaves(context));
         context.register(ICY_CAVES, BiomeBuilders.icyCaves(context));
+        context.register(BURIED_JUNGLE, BiomeBuilders.buriedJungle(context));
     }
 }

@@ -1,5 +1,6 @@
 package com.thxlotl.cavernouslite.worldgen.features.config;
 
+import com.thxlotl.cavernouslite.tag.ModBlockTags;
 import com.thxlotl.cavernouslite.util.CFeatureUtil;
 import com.thxlotl.cavernouslite.util.WeightedBlockState;
 import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -36,12 +38,14 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.UpwardsBranchingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
 public class IcyCavesConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_PILLAR = ModConfiguredFeatures.registerKey("ice_pillar");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DIAMOND_EXTRA = ModConfiguredFeatures.registerKey("diamond_extra_icy");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
@@ -56,6 +60,15 @@ public class IcyCavesConfiguredFeatures {
                 false
         ));
 
+
+        FeatureUtils.register(context, DIAMOND_EXTRA, Feature.ORE, new OreConfiguration(
+                List.of(
+                        OreConfiguration.target(new TagMatchTest(ModBlockTags.STONE_ORE_REPLACEABLE_UNDERGROUND), Blocks.DIAMOND_ORE.defaultBlockState()),
+                        OreConfiguration.target(new TagMatchTest(ModBlockTags.DEEPSLATE_ORE_REPLACEABLE_UNDERGROUND), Blocks.DEEPSLATE_DIAMOND_ORE.defaultBlockState())
+                ),
+                5,
+                1f
+        ));
     }
 
 }

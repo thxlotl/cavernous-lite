@@ -2,8 +2,13 @@ package com.thxlotl.cavernouslite.worldgen.biome;
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+
+import java.util.List;
 
 public class BiolithBiomePlacement {
 
@@ -11,26 +16,35 @@ public class BiolithBiomePlacement {
 
     public static void createBiomePlacementsAndSurfaceRules() {
 
-        BiomePlacement.addOverworld(ModBiomes.ARID_CAVES, ClimateParameters.ARID_CAVES);
+        addClimateParameterList(ModBiomes.ARID_CAVES, ClimateParameters.ARID_CAVES);
         addSurfaceRule(BiomeSurfaceRules.aridRules());
 
-        BiomePlacement.addOverworld(ModBiomes.FUNGAL_CAVES, ClimateParameters.FUNGAL_CAVES);
+        addClimateParameterList(ModBiomes.FUNGAL_CAVES, ClimateParameters.FUNGAL_CAVES);
         addSurfaceRule(BiomeSurfaceRules.fungalRules());
 
-        BiomePlacement.addOverworld(ModBiomes.VOLCANIC_CAVES, ClimateParameters.VOLCANIC_CAVES);
+        addClimateParameterList(ModBiomes.VOLCANIC_CAVES, ClimateParameters.VOLCANIC_CAVES);
         addSurfaceRule(BiomeSurfaceRules.volcanicRules());
 
-        BiomePlacement.addOverworld(ModBiomes.CRYSTAL_CAVES, ClimateParameters.CRYSTAL_CAVES);
+        addClimateParameterList(ModBiomes.CRYSTAL_CAVES, ClimateParameters.CRYSTAL_CAVES);
         addSurfaceRule(BiomeSurfaceRules.crystalRules());
 
-        BiomePlacement.addOverworld(ModBiomes.LUSH_DRIPSTONE_CAVES, ClimateParameters.LUSH_DRIPSTONE_CAVES);
+        addClimateParameterList(ModBiomes.LUSH_DRIPSTONE_CAVES, ClimateParameters.LUSH_DRIPSTONE_CAVES);
 
-        BiomePlacement.addOverworld(ModBiomes.MARBLED_CAVES, ClimateParameters.MARBLED_CAVES);
+        addClimateParameterList(ModBiomes.MARBLED_CAVES, ClimateParameters.MARBLED_CAVES);
         addSurfaceRule(BiomeSurfaceRules.marbledRules());
 
-        BiomePlacement.addOverworld(ModBiomes.ICY_CAVES, ClimateParameters.ICY_CAVES);
+        addClimateParameterList(ModBiomes.ICY_CAVES, ClimateParameters.ICY_CAVES);
         addSurfaceRule(BiomeSurfaceRules.icyRules());
 
+        addClimateParameterList(ModBiomes.BURIED_JUNGLE, ClimateParameters.BURIED_JUNGLE);
+        addSurfaceRule(BiomeSurfaceRules.jungleRules());
+
+    }
+
+    private static void addClimateParameterList(ResourceKey<Biome> biome, List<Climate.ParameterPoint> points) {
+        for (Climate.ParameterPoint point : points) {
+            BiomePlacement.addOverworld(biome, point);
+        }
     }
 
     private static void addSurfaceRule(SurfaceRules.RuleSource ruleSource) {

@@ -2,63 +2,126 @@ package com.thxlotl.cavernouslite.worldgen.biome;
 
 import net.minecraft.world.level.biome.Climate;
 
+import java.util.List;
+
 public class ClimateParameters {
 
-    public static final Climate.ParameterPoint FUNGAL_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-0.45f, 0.2f),
-            Climate.Parameter.span(-0.35f, 0.7f),
-            Climate.Parameter.span(-1.05f, -0.455f),
-            Climate.Parameter.span(-0.375f, 1f),
-            Climate.Parameter.span(0.2f, 0.7f),
-            Climate.Parameter.span(-1.0f, 1.0f),
-            0L);
-    public static final Climate.ParameterPoint VOLCANIC_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-1.0f, 1.0f), // Temperature
-            Climate.Parameter.span(-1.0f, 1.0f), // Humidity
-            Climate.Parameter.span(-1.05f, -0.11f), // Continentalness
-            Climate.Parameter.span(0.05f, 0.45f), // Erosion
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(-1.0f, 1.0f), // Weirdness
-            0L);
-    public static final Climate.ParameterPoint CRYSTAL_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-0.2f, 0.45f),
-            Climate.Parameter.span(-0.7f, 0.35f),
-            Climate.Parameter.span(0.455f, 1.05f),
-            Climate.Parameter.span(-1f, 0.375f),
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(-1.0f, 1.0f),
-            0L);
-    public static final Climate.ParameterPoint LUSH_DRIPSTONE_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-1f, 0f),
-            Climate.Parameter.span(-0.7f, 0.35f),
-            Climate.Parameter.span(-0.455f, 0f),
-            Climate.Parameter.span(-1f, 0.375f),
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(0f, 1.0f),
-            0L);
-    public static final Climate.ParameterPoint MARBLED_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-1f, 0f),
-            Climate.Parameter.span(-0.7f, 0.35f),
-            Climate.Parameter.span(-0.455f, 0f),
-            Climate.Parameter.span(-1f, 1f),
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(0f, 1.0f),
-            0L);
-    public static final Climate.ParameterPoint ARID_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(0.5f, 2.0f), // Temperature
-            Climate.Parameter.span(-2.0f, -0.5f), // Humidity
-            Climate.Parameter.span(-0.75f, 0.4f), // Continentalness
-            Climate.Parameter.span(0.05f, 1.0f), // Erosion
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(-1.0f, 1f), // Weirdness
-            0L);
-    public static final Climate.ParameterPoint ICY_CAVES = new Climate.ParameterPoint(
-            Climate.Parameter.span(-2.0f, -0.3f), // Temperature
-            Climate.Parameter.span(-2.0f, -0.5f), // Humidity
-            Climate.Parameter.span(0.5f, 1.0f), // Continentalness
-            Climate.Parameter.span(0.05f, 0.3f), // Erosion
-            Climate.Parameter.span(0.35f, 1f), // Depth
-            Climate.Parameter.span(-1.0f, 1f), // Weirdness
-            0L);
+    private static final Climate.Parameter shallowCaveDepth = Climate.Parameter.span(0.2f, 0.6f);
+    private static final Climate.Parameter deepCaveDepth = Climate.Parameter.span(0.9f, 1.2f);
+    private static final Climate.Parameter allCaveDepth = Climate.Parameter.span(0.2f, 1.2f);
+    private static final Climate.Parameter weirdness = Climate.Parameter.span(-1f, 1f);
+    private static final Climate.Parameter all = Climate.Parameter.span(-2f, 2f);
+
+    public static final List<Climate.ParameterPoint> FUNGAL_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(-0.15f, 0.2f), // Temperature
+                    Climate.Parameter.span(0.1f, 1.0f), // Humidity
+                    Climate.Parameter.span(-0.11f, 0.8f), // Continentalness
+                    Climate.Parameter.span(-0.375f, 0.45f), // Erosion
+                    allCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L),
+            new Climate.ParameterPoint(
+                    all, // Temperature
+                    all, // Humidity
+                    Climate.Parameter.span(-1.2f, -0.95f), // Continentalness
+                    all, // Erosion
+                    deepCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> VOLCANIC_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    all,  // Temperature
+                    all,  // Humidity
+                    Climate.Parameter.span(0.2f, 1f), // Continentalness
+                    Climate.Parameter.span(-0.1f, 0.55f), // Erosion
+                    deepCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> CRYSTAL_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    all,  // Temperature
+                    all,  // Humidity
+                    Climate.Parameter.span(0.03f, 1f), // Continentalness
+                    Climate.Parameter.span(-1.2f, -0.45f), // Erosion
+                    allCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> LUSH_DRIPSTONE_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    all,  // Temperature
+                    Climate.Parameter.span(0.6f, 1f),  // Humidity
+                    Climate.Parameter.span(0.3f, 1f), // Continentalness
+                    all, // Erosion
+                    shallowCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> MARBLED_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    all,  // Temperature
+                    all,  // Humidity
+                    Climate.Parameter.span(0.5f, 0.8f), // Continentalness
+                    Climate.Parameter.span(-0.45f, -0.3f), // Erosion
+                    shallowCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> ARID_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(0.55f, 2.0f), // Temperature
+                    all, // Humidity
+                    Climate.Parameter.span(-1.2f, 0.7f), // Continentalness
+                    all, // Erosion
+                    shallowCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L),
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(0.55f, 2.0f), // Temperature
+                    all, // Humidity
+                    Climate.Parameter.span(-1.2f, 0.7f), // Continentalness
+                    Climate.Parameter.span(-0.2f, 0.8f), // Erosion
+                    deepCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> ICY_CAVES = List.of(
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(-1.0f, 0.2f), // Temperature
+                    all, // Humidity
+                    Climate.Parameter.span(0.03f, 1.0f), // Continentalness
+                    Climate.Parameter.span(-1f, -0.375f), // Erosion
+                    shallowCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
+
+    public static final List<Climate.ParameterPoint> BURIED_JUNGLE = List.of(
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(0.2f, 0.55f), // Temperature
+                    Climate.Parameter.span(0.1f, 1.0f), // Humidity
+                    Climate.Parameter.span(-0.11f, 0.8f), // Continentalness
+                    Climate.Parameter.span(0.05f, 0.55f), // Erosion
+                    shallowCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L),
+            new Climate.ParameterPoint(
+                    Climate.Parameter.span(0.2f, 0.55f), // Temperature
+                    Climate.Parameter.span(0.1f, 1.0f), // Humidity
+                    Climate.Parameter.span(-0.11f, 0.6f), // Continentalness
+                    Climate.Parameter.span(0.05f, 0.55f), // Erosion
+                    deepCaveDepth, // Depth
+                    weirdness, // Weirdness
+                    0L)
+    );
 
 }

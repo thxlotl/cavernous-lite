@@ -12,6 +12,7 @@ public class ModNoises {
     public static final ResourceKey<NormalNoise.NoiseParameters> FUNGAL_SURFACE = createKey("fungal_surface");
     public static final ResourceKey<NormalNoise.NoiseParameters> VOLCANIC = createKey("volcanic");
     public static final ResourceKey<NormalNoise.NoiseParameters> STRIPEY = createKey("stripey");
+    public static final ResourceKey<NormalNoise.NoiseParameters> STRIPEY_SMALL = createKey("stripey_small");
     public static final ResourceKey<NormalNoise.NoiseParameters> SCATTERED = createKey("scattered");
 
     public static void bootstrap(BootstrapContext<NormalNoise.NoiseParameters> context) {
@@ -23,6 +24,8 @@ public class ModNoises {
                 1.1, 1);
         register(context, SCATTERED, -6,
                 1.5, 1, 1, 2.5);
+        register(context, STRIPEY_SMALL, -3,
+                1.1, 1);
     }
 
 

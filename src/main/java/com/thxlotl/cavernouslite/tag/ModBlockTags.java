@@ -9,8 +9,10 @@ import net.minecraft.world.level.block.Block;
 public class ModBlockTags {
 
     public static final TagKey<Block> MOSS_BLOCK = createTag("moss_block");
-    public static final TagKey<Block> MYCELIUM = createTag("mycelium");;
+    public static final TagKey<Block> MYCELIUM = createTag("mycelium");
     public static final TagKey<Block> AMETHYST = createTag("amethyst");
+    public static final TagKey<Block> MUD = createTag("mud");
+    public static final TagKey<Block> JUNGLE_BRANCH_CAN_GROW_THROUGH = createTag("jungle_branch_can_grow_through");
     public static final TagKey<Block> STONE_ORE_REPLACEABLE_UNDERGROUND = createTag("stone_ore_replaceable_underground");
     public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLE_UNDERGROUND = createTag("deepslate_ore_replaceable_underground");
     public static final TagKey<Block> MAGMA = createTag("magma");

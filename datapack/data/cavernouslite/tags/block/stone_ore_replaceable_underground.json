@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:packed_mud",
+    "minecraft:moss_block",
+    "minecraft:mycelium",
+    "minecraft:terracotta",
+    "minecraft:red_sandstone",
+    "minecraft:orange_terracotta",
+    "minecraft:packed_ice",
+    "minecraft:blue_ice",
+    "#minecraft:stone_ore_replaceables"
+  ]
+}
