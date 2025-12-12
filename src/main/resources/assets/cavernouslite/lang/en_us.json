@@ -6,11 +6,13 @@
   "cavernouslite.configuration.title": "Cavernous Lite Configs",
   "cavernouslite.configuration.section.cavernouslite.common.toml": "Cavernous Lite Configs",
   "cavernouslite.configuration.section.cavernouslite.common.toml.title": "Cavernous Lite Configs",
-  "cavernouslite.configuration.items": "Item List",
-  "cavernouslite.configuration.logDirtBlock": "Log Dirt Block",
-  "cavernouslite.configuration.magicNumberIntroduction": "Magic Number Text",
-  "cavernouslite.configuration.magicNumber": "Magic Number",
 
   "biome.cavernouslite.fungal_caves": "Fungal Caves",
-  "biome.cavernouslite.volcanic_caves": "Volcanic Caves"
+  "biome.cavernouslite.volcanic_caves": "Volcanic Caves",
+  "biome.cavernouslite.crystal_caves": "Crystal Caves",
+  "biome.cavernouslite.lush_dripstone_caves": "Lush Dripstone Caves",
+  "biome.cavernouslite.marbled_caves": "Marbled Caves",
+  "biome.cavernouslite.arid_caves": "Arid Caves",
+  "biome.cavernouslite.icy_caves": "Icy Caves",
+  "biome.cavernouslite.buried_jungle": "Buried Jungle"
 }

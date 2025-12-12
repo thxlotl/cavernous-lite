@@ -222,4 +222,36 @@ public class BiomeSurfaceRules {
 
         return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ICY_CAVES), rule);
     }
+
+    public static SurfaceRules.RuleSource jungleRules()
+    {
+        SurfaceRules.RuleSource rule = SurfaceRules.sequence(
+            SurfaceRules.ifTrue(
+                    SurfaceRules.waterBlockCheck(0, 0),
+                    SurfaceRules.ifTrue(
+                            SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR),
+                            SurfaceRules.sequence(
+                                    SurfaceRules.ifTrue(
+                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY_SMALL, -0.18, 0.18),
+                                            SurfaceRules.state(Blocks.MUD.defaultBlockState())
+                                    ),
+                                    SurfaceRules.ifTrue(
+                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY, -1000, -0.15),
+                                            SurfaceRules.state(Blocks.MOSS_BLOCK.defaultBlockState())
+                                    ),
+                                    SurfaceRules.ifTrue(
+                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY, 0.15, 1000),
+                                            SurfaceRules.state(Blocks.MOSS_BLOCK.defaultBlockState())
+                                    )
+                            )
+                    )
+            ),
+            SurfaceRules.ifTrue(
+                    SurfaceRules.stoneDepthCheck(0, true, 2, CaveSurface.FLOOR),
+                    SurfaceRules.state(Blocks.MUD.defaultBlockState())
+            )
+        );
+
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.BURIED_JUNGLE), rule);
+    }
 }

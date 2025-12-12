@@ -22,6 +22,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(ModBlockTags.MOSS_BLOCK).add(Blocks.MOSS_BLOCK);
         tag(ModBlockTags.MYCELIUM).add(Blocks.MYCELIUM);
         tag(ModBlockTags.MAGMA).add(Blocks.MAGMA_BLOCK);
+        tag(ModBlockTags.MUD).add(Blocks.MUD);
+        tag(ModBlockTags.JUNGLE_BRANCH_CAN_GROW_THROUGH).add(Blocks.AZALEA_LEAVES, Blocks.AIR, Blocks.ACACIA_LEAVES);
         tag(ModBlockTags.AMETHYST).add(Blocks.AMETHYST_BLOCK, Blocks.BUDDING_AMETHYST);
 
         tag(ModBlockTags.STONE_ORE_REPLACEABLE_UNDERGROUND).add(
@@ -29,7 +31,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         ).addTag(BlockTags.STONE_ORE_REPLACEABLES);
 
         tag(ModBlockTags.DEEPSLATE_ORE_REPLACEABLE_UNDERGROUND).add(
-                Blocks.BASALT, Blocks.BLACKSTONE
+                Blocks.BASALT, Blocks.BLACKSTONE, Blocks.MUD
         ).addTag(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES).add(

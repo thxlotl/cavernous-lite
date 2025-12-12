@@ -1,5 +1,6 @@
 package com.thxlotl.cavernouslite.worldgen.features.config;
 
+import com.thxlotl.cavernouslite.tag.ModBlockTags;
 import com.thxlotl.cavernouslite.util.CFeatureUtil;
 import com.thxlotl.cavernouslite.util.WeightedBlockState;
 import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -35,6 +37,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.UpwardsBranchingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
@@ -44,8 +47,18 @@ public class AridCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> HOODOO_1 = ModConfiguredFeatures.registerKey("hoodoo_1");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HOODOO_2 = ModConfiguredFeatures.registerKey("hoodoo_2");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_DEAD_BUSH = ModConfiguredFeatures.registerKey("giant_dead_bush");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_EXTRA = ModConfiguredFeatures.registerKey("gold_extra");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+
+        FeatureUtils.register(context, GOLD_EXTRA, Feature.ORE, new OreConfiguration(
+                List.of(
+                        OreConfiguration.target(new TagMatchTest(ModBlockTags.STONE_ORE_REPLACEABLE_UNDERGROUND), Blocks.GOLD_ORE.defaultBlockState()),
+                        OreConfiguration.target(new TagMatchTest(ModBlockTags.DEEPSLATE_ORE_REPLACEABLE_UNDERGROUND), Blocks.DEEPSLATE_GOLD_ORE.defaultBlockState())
+                ),
+                9,
+                0f
+        ));
 
         FeatureUtils.register(context, PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
                 40,

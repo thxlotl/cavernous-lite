@@ -33,5 +33,6 @@ public class ModBiomes {
         context.register(MARBLED_CAVES, BiomeBuilders.basicCave(context));
         context.register(ARID_CAVES, BiomeBuilders.aridCaves(context));
         context.register(ICY_CAVES, BiomeBuilders.icyCaves(context));
+        context.register(BURIED_JUNGLE, BiomeBuilders.buriedJungle(context));
     }
 }

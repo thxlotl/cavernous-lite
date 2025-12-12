@@ -271,6 +271,7 @@ public class BiomeBuilders {
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, AridCavesPlacedFeatures.HOODOO_2);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AridCavesPlacedFeatures.PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AridCavesPlacedFeatures.GIANT_DEAD_BUSH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AridCavesPlacedFeatures.GOLD_EXTRA);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -307,6 +308,7 @@ public class BiomeBuilders {
         addUndergroundOres(biomeBuilder);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, IcyCavesPlacedFeatures.ICE_PILLAR);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, IcyCavesPlacedFeatures.DIAMOND_EXTRA);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -339,7 +341,11 @@ public class BiomeBuilders {
         globalOverworldGeneration(biomeBuilder);
         addUndergroundOres(biomeBuilder);
 
-
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, BuriedJunglePlacedFeatures.COARSE_DIRT_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, BuriedJunglePlacedFeatures.MUD_POOL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BuriedJunglePlacedFeatures.PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BuriedJunglePlacedFeatures.TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BuriedJunglePlacedFeatures.RED_TREE);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()

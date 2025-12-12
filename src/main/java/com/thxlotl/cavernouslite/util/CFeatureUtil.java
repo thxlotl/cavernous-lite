@@ -1,6 +1,7 @@
 package com.thxlotl.cavernouslite.util;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -14,6 +15,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
@@ -61,6 +64,22 @@ public class CFeatureUtil {
                 0f,
                 6,
                 vegChance,
+                UniformInt.of(rMin, rMax),
+                0.75f);
+    }
+
+    public static VegetationPatchConfiguration createSurfaceVegetationPatch(TagKey<Block> tag,
+                                                                            Block block,
+                                                                            int rMin, int rMax) {
+        return new VegetationPatchConfiguration(
+                tag,
+                BlockStateProvider.simple(block),
+                PlacementUtils.inlinePlaced(Holder.direct(new ConfiguredFeature<>(Feature.NO_OP, NoneFeatureConfiguration.INSTANCE))),
+                CaveSurface.FLOOR,
+                ConstantInt.of(1),
+                0f,
+                6,
+                0,
                 UniformInt.of(rMin, rMax),
                 0.75f);
     }
