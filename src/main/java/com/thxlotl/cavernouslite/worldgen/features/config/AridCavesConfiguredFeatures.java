@@ -22,7 +22,6 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -60,23 +59,10 @@ public class AridCavesConfiguredFeatures {
                 0f
         ));
 
-        FeatureUtils.register(context, PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-                40,
-                4,
-                6,
-                PlacementUtils.inlinePlaced(
-                        Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
-                                new WeightedBlockState(Blocks.SHORT_DRY_GRASS.defaultBlockState(), 20),
-                                new WeightedBlockState(Blocks.TALL_DRY_GRASS.defaultBlockState(), 5),
-                                new WeightedBlockState(Blocks.DEAD_BUSH.defaultBlockState(), 1)
-                        ))),
-                        BlockPredicateFilter.forPredicate(
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(Blocks.SHORT_DRY_GRASS.defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                )
-                        )
-                )
+        FeatureUtils.register(context, PATCH, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(Blocks.SHORT_DRY_GRASS.defaultBlockState(), 20),
+                new WeightedBlockState(Blocks.TALL_DRY_GRASS.defaultBlockState(), 5),
+                new WeightedBlockState(Blocks.DEAD_BUSH.defaultBlockState(), 1)
         ));
 
         FeatureUtils.register(context, HOODOO_1, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -101,7 +87,7 @@ public class AridCavesConfiguredFeatures {
                                         new AlterGroundDecorator(BlockStateProvider.simple(Blocks.TERRACOTTA))
                                 )
                         )
-                        .ignoreVines().dirt(SimpleStateProvider.simple(Blocks.TERRACOTTA)).build()
+                        .ignoreVines().build()
         );
 
         FeatureUtils.register(context, HOODOO_2, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -130,7 +116,7 @@ public class AridCavesConfiguredFeatures {
                                         new AlterGroundDecorator(BlockStateProvider.simple(Blocks.TERRACOTTA))
                                 )
                         )
-                        .ignoreVines().dirt(SimpleStateProvider.simple(Blocks.TERRACOTTA)).build()
+                        .ignoreVines().build()
         );
 
         HolderGetter<Block> holdergetter = context.lookup(Registries.BLOCK);
@@ -153,7 +139,6 @@ public class AridCavesConfiguredFeatures {
                         new TwoLayersFeatureSize(0, 0, 0)
                 )
                 .ignoreVines()
-                .dirt(SimpleStateProvider.simple(Blocks.SAND))
                 .build()
         );
 

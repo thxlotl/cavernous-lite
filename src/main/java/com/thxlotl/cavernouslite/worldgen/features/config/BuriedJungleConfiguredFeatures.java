@@ -7,18 +7,14 @@ import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.BigDripleafBlock;
-import net.minecraft.world.level.block.BigDripleafStemBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -29,14 +25,10 @@ import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.UpwardsBranchingTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
@@ -49,8 +41,7 @@ public class BuriedJungleConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_DRIPLEAF = ModConfiguredFeatures.registerKey("small_dripleaf");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE = ModConfiguredFeatures.registerKey("jungle_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_TREE = ModConfiguredFeatures.registerKey("jungle_tree_red");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> VEGETATION = ModConfiguredFeatures.registerKey("jungle_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH = ModConfiguredFeatures.registerKey("jungle_vegetation_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH = ModConfiguredFeatures.registerKey("jungle_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COARSE_DIRT_PATCH = ModConfiguredFeatures.registerKey("coarse_dirt_patch");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context,
@@ -161,19 +152,9 @@ public class BuriedJungleConfiguredFeatures {
                 new TwoLayersFeatureSize(0, 0, 0)
         ).build());
 
-        FeatureUtils.register(context, VEGETATION, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+        FeatureUtils.register(context, PATCH, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
                 new WeightedBlockState(Blocks.BUSH.defaultBlockState(), 10),
                 new WeightedBlockState(Blocks.FERN.defaultBlockState(), 4)
-        ));
-
-        FeatureUtils.register(context, PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-                300,
-                7,
-                3,
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(VEGETATION),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
-                        ))
         ));
 
         FeatureUtils.register(context, COARSE_DIRT_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(

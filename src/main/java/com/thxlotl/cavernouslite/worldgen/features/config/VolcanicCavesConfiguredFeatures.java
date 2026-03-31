@@ -65,7 +65,7 @@ public class VolcanicCavesConfiguredFeatures {
                 SimpleStateProvider.simple(Blocks.AIR),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), ConstantInt.of(1), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
-            ).dirt(SimpleStateProvider.simple(Blocks.BLACKSTONE)).ignoreVines().build()
+            ).ignoreVines().build()
         );
 
     }

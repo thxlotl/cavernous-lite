@@ -3,7 +3,7 @@ package com.thxlotl.cavernouslite.worldgen.biome;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class BiolithBiomePlacement {
 
-    static ResourceLocation overworldRules = ResourceLocation.fromNamespaceAndPath("minecraft", "rules/overworld");
+    static Identifier overworldRules = Identifier.fromNamespaceAndPath("minecraft", "rules/overworld");
 
     public static void createBiomePlacementsAndSurfaceRules() {
 

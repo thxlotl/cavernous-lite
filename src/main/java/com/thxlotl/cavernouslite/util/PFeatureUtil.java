@@ -25,6 +25,22 @@ public class PFeatureUtil {
                 BiomeFilter.biome()
         );
     }
+    public static List<PlacementModifier> cavePatchPlacementModifers(int count, Block surviveBlock) {
+        return List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                EnvironmentScanPlacement.scanningFor(
+                        Direction.DOWN,
+                        BlockPredicate.allOf(
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                BlockPredicate.wouldSurvive(surviveBlock.defaultBlockState(), Vec3i.ZERO)
+                        ),
+                        24
+                ),
+                BiomeFilter.biome()
+        );
+    }
     public static List<PlacementModifier> cavePlacementModifers(int count, Direction direction) {
         return List.of(
                 CountPlacement.of(count),
