@@ -120,6 +120,7 @@ dependencies {
 
     implementation("com.terraformersmc:biolith-neoforge:${project.biolith_version}")
     jarJar("com.terraformersmc:biolith-neoforge:${project.biolith_version}")
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
