@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 200
+      "count": 2000
     },
     {
       "type": "minecraft:in_square"
@@ -25,8 +25,32 @@
       "direction_of_search": "up",
       "max_steps": 24,
       "target_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:amethyst_cluster",
+              "Properties": {
+                "facing": "up",
+                "waterlogged": "false"
+              }
+            }
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:matching_block_tag",
+            "offset": [
+              0,
+              -1,
+              0
+            ],
+            "tag": "cavernouslite:amethyst"
+          }
+        ]
       }
     },
     {

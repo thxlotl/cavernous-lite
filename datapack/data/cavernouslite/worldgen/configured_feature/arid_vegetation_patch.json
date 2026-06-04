@@ -1,59 +1,29 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "minecraft:simple_block",
   "config": {
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "schedule_tick": true,
-          "to_place": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
-              {
-                "data": {
-                  "Name": "minecraft:short_dry_grass"
-                },
-                "weight": 20
-              },
-              {
-                "data": {
-                  "Name": "minecraft:tall_dry_grass"
-                },
-                "weight": 5
-              },
-              {
-                "data": {
-                  "Name": "minecraft:dead_bush"
-                },
-                "weight": 1
-              }
-            ]
-          }
-        }
-      },
-      "placement": [
+    "schedule_tick": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
         {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:would_survive",
-                "state": {
-                  "Name": "minecraft:short_dry_grass"
-                }
-              },
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              }
-            ]
-          }
+          "data": {
+            "Name": "minecraft:short_dry_grass"
+          },
+          "weight": 20
+        },
+        {
+          "data": {
+            "Name": "minecraft:tall_dry_grass"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:dead_bush"
+          },
+          "weight": 1
         }
       ]
-    },
-    "tries": 40,
-    "xz_spread": 4,
-    "y_spread": 6
+    }
   }
 }

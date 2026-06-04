@@ -1,4 +1,38 @@
 {
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.dripstone_caves"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:falling_dust",
+          "block_state": {
+            "Name": "minecraft:sand"
+          }
+        },
+        "probability": 0.005
+      }
+    ],
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/fog_end_distance": 85.0,
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/sky_color": "#7ba4ff",
+    "minecraft:visual/sky_light_factor": 0.0,
+    "minecraft:visual/water_fog_color": "#050533"
+  },
   "carvers": [
     "minecraft:cave",
     "minecraft:cave_extra_underground",
@@ -6,39 +40,9 @@
   ],
   "downfall": 0.0,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": 7039851,
-    "grass_color": 7039851,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": [
-      {
-        "data": {
-          "max_delay": 24000,
-          "min_delay": 12000,
-          "replace_current_music": false,
-          "sound": "minecraft:music.overworld.dripstone_caves"
-        },
-        "weight": 1
-      }
-    ],
-    "music_volume": 1.0,
-    "particle": {
-      "options": {
-        "type": "minecraft:falling_dust",
-        "block_state": {
-          "Name": "minecraft:sand"
-        }
-      },
-      "probability": 0.005
-    },
-    "sky_color": 8103167,
-    "water_color": 4163300,
-    "water_fog_color": 329011
+    "foliage_color": "#6b6b6b",
+    "grass_color": "#6b6b6b",
+    "water_color": "#3f86e4"
   },
   "features": [
     [],
