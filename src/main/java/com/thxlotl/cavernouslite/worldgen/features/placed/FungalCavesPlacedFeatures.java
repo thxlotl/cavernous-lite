@@ -132,8 +132,7 @@ public class FungalCavesPlacedFeatures {
                 FLIP_STEP_3,
                 Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK)))),
                 List.of(
-                        CountPlacement.of(170),
-                        CountPlacement.of(100),
+                        CountPlacement.of(1000),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
