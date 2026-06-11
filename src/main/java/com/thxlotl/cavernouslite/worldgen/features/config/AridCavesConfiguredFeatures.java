@@ -72,22 +72,23 @@ public class AridCavesConfiguredFeatures {
                         new FancyFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 1),
                         new TwoLayersFeatureSize(0, 0, 0)
                 )
-                        .decorators(
-                                List.of(
-                                        new AttachedToLeavesDecorator(
-                                                1,
-                                                0,
-                                                0,
-                                                BlockStateProvider.simple(Blocks.SAND),
-                                                1,
-                                                List.of(
-                                                        Direction.UP
-                                                )
-                                        ),
-                                        new AlterGroundDecorator(BlockStateProvider.simple(Blocks.TERRACOTTA))
+                .belowTrunkProvider(BlockStateProvider.simple(Blocks.TERRACOTTA))
+                .decorators(
+                        List.of(
+                                new AttachedToLeavesDecorator(
+                                        1,
+                                        0,
+                                        0,
+                                        BlockStateProvider.simple(Blocks.SAND),
+                                        1,
+                                        List.of(
+                                                Direction.UP
+                                        )
                                 )
                         )
-                        .ignoreVines().build()
+                )
+                .ignoreVines()
+                .build()
         );
 
         FeatureUtils.register(context, HOODOO_2, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -101,6 +102,7 @@ public class AridCavesConfiguredFeatures {
                                 256),
                         new TwoLayersFeatureSize(0, 0, 0)
                 )
+                .belowTrunkProvider(BlockStateProvider.simple(Blocks.TERRACOTTA))
                         .decorators(
                                 List.of(
                                         new AttachedToLeavesDecorator(
@@ -112,8 +114,7 @@ public class AridCavesConfiguredFeatures {
                                                 List.of(
                                                         Direction.UP
                                                 )
-                                        ),
-                                        new AlterGroundDecorator(BlockStateProvider.simple(Blocks.TERRACOTTA))
+                                        )
                                 )
                         )
                         .ignoreVines().build()
