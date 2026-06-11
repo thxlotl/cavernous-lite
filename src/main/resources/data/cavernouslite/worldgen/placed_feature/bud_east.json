@@ -9,6 +9,18 @@
       "type": "minecraft:in_square"
     },
     {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 256
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
+    },
+    {
       "type": "minecraft:environment_scan",
       "direction_of_search": "up",
       "max_steps": 24,
@@ -20,7 +32,7 @@
             "state": {
               "Name": "minecraft:amethyst_cluster",
               "Properties": {
-                "facing": "west",
+                "facing": "east",
                 "waterlogged": "false"
               }
             }
@@ -32,25 +44,13 @@
           {
             "type": "minecraft:matching_block_tag",
             "offset": [
-              1,
+              -1,
               0,
               0
             ],
             "tag": "cavernouslite:amethyst"
           }
         ]
-      }
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "absolute": 256
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
       }
     },
     {

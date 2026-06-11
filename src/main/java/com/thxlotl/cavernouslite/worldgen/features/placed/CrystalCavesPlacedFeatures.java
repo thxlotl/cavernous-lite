@@ -40,10 +40,10 @@ public class CrystalCavesPlacedFeatures {
 
         ModPlacedFeatures.register(context, BUD_UP, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_UP), cavePlacementModifers(2000, Direction.DOWN));
         ModPlacedFeatures.register(context, BUD_DOWN, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_DOWN), cavePlacementModifers(2000, Direction.UP));
-        ModPlacedFeatures.register(context, BUD_NORTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_NORTH), cavePlacementModifersNoScan(2000, Direction.NORTH));
-        ModPlacedFeatures.register(context, BUD_EAST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_EAST), cavePlacementModifersNoScan(2000, Direction.EAST));
-        ModPlacedFeatures.register(context, BUD_SOUTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_SOUTH), cavePlacementModifersNoScan(2000, Direction.SOUTH));
-        ModPlacedFeatures.register(context, BUD_WEST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_WEST), cavePlacementModifersNoScan(2000, Direction.WEST));
+        ModPlacedFeatures.register(context, BUD_NORTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_NORTH), cavePlacementModifersNoScan(2000, Direction.SOUTH));
+        ModPlacedFeatures.register(context, BUD_EAST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_EAST), cavePlacementModifersNoScan(2000, Direction.WEST));
+        ModPlacedFeatures.register(context, BUD_SOUTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_SOUTH), cavePlacementModifersNoScan(2000, Direction.NORTH));
+        ModPlacedFeatures.register(context, BUD_WEST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_WEST), cavePlacementModifersNoScan(2000, Direction.EAST));
 
         ModPlacedFeatures.register(context, BIG_GEODE, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BIG_GEODE), List.of(
                 RarityFilter.onAverageOnceEvery(38),
@@ -84,12 +84,12 @@ public class CrystalCavesPlacedFeatures {
         return List.of(
                 CountPlacement.of(count),
                 InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                 EnvironmentScanPlacement.scanningFor(
                         Direction.UP,
                         crystalPlacementPerDirection(direction),
                         24
                 ),
-                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                 BiomeFilter.biome()
         );
     }
