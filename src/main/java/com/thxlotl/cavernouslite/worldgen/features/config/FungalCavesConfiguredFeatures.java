@@ -20,11 +20,11 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
@@ -112,38 +112,39 @@ public class FungalCavesConfiguredFeatures {
                 ).ignoreVines().build()
         );
 
-        FeatureUtils.register(context, FLIPPED_SHROOM_CAP, Feature.RANDOM_PATCH, new RandomPatchConfiguration(200, 2, 1, PlacementUtils.inlinePlaced(
-                Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK)))),
-                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                        BlockPredicate.matchesBlocks(Vec3i.ZERO, Blocks.AIR),
-                        BlockPredicate.anyOf(
-                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 2), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 2), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 2), Blocks.RED_CONCRETE),
-
-                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, 1), Blocks.RED_CONCRETE),
-
-                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 0), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, 0), Blocks.RED_CONCRETE),
-
-                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, -1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, -1), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, -1), Blocks.RED_CONCRETE),
-
-                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -2), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -2), Blocks.RED_CONCRETE),
-                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, -2), Blocks.RED_CONCRETE)
-                        )
-                ))
-        )));
+        FeatureUtils.register(context, FLIPPED_SHROOM_CAP, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK)));
+//        FeatureUtils.register(context, FLIPPED_SHROOM_CAP, Feature.RANDOM_PATCH, new RandomPatchConfiguration(200, 2, 1, PlacementUtils.inlinePlaced(
+//                Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK)))),
+//                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+//                        BlockPredicate.matchesBlocks(Vec3i.ZERO, Blocks.AIR),
+//                        BlockPredicate.anyOf(
+//                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 2), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 2), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 2), Blocks.RED_CONCRETE),
+//
+//                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, 1), Blocks.RED_CONCRETE),
+//
+//                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 0), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, 0), Blocks.RED_CONCRETE),
+//
+//                                BlockPredicate.matchesBlocks(new Vec3i(-2, 0, -1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, -1), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(2, 0, -1), Blocks.RED_CONCRETE),
+//
+//                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -2), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -2), Blocks.RED_CONCRETE),
+//                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, -2), Blocks.RED_CONCRETE)
+//                        )
+//                ))
+//        )));
         FeatureUtils.register(context, FLIPPED_SHROOM_STEM, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
                         new BlockColumnConfiguration.Layer(UniformInt.of(4, 10), SimpleStateProvider.simple(Blocks.MUSHROOM_STEM)),

@@ -9,6 +9,10 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.AmbientParticle;
+import net.minecraft.world.attribute.AmbientSounds;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -88,15 +92,20 @@ public class BiomeBuilders {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.015f))
                         .waterColor(4178916)
-                        .waterFogColor(335155)
-                        .skyColor(12377016)
-                        .fogColor(12377016)
                         .grassColorOverride(7311404)
                         .foliageColorOverride(7311404)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 335155)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 10014123) //12377016 old color
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 10014123)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ParticleTypes.SPORE_BLOSSOM_AIR, 0.015f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();
     }
 
@@ -126,16 +135,20 @@ public class BiomeBuilders {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .waterColor(7039851)
-                        .waterFogColor(3552822)
-                        .skyColor(8870956)
-                        .fogColor(13464130)
-                        .grassColorOverride(7039851)
-                        .foliageColorOverride(7039851)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.08f))
-                        .build())
+                        .waterColor(4178916)
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 3552822)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 8870956) //12377016 old color
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 13464130)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ParticleTypes.WHITE_ASH, 0.08f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .build();
     }
 
@@ -172,12 +185,18 @@ public class BiomeBuilders {
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .skyColor(7907327)
-                        .fogColor(12638463)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
-                        .build())
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 7907327)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .build();
     }
 
@@ -210,15 +229,22 @@ public class BiomeBuilders {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.007f))
                         .waterColor(4178916)
-                        .waterFogColor(335155)
-                        .skyColor(8103167)
-                        .fogColor(12638463)
                         .grassColorOverride(7311404)
                         .foliageColorOverride(7311404)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 335155)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 8103167)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES,
+                        AmbientParticle.of(ParticleTypes.SPORE_BLOSSOM_AIR, 0.007f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC,
+                        new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();
     }
 
@@ -245,11 +271,19 @@ public class BiomeBuilders {
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .skyColor(7907327)
-                        .fogColor(12638463)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES)).build())
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 7907327)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC,
+                        new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .build();
     }
 
@@ -282,15 +316,23 @@ public class BiomeBuilders {
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(4163300)
-                        .waterFogColor(329011)
-                        .skyColor(8103167)
-                        .fogColor(12638463)
                         .grassColorOverride(7039851)
                         .foliageColorOverride(7039851)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
-                        .ambientParticle(new AmbientParticleSettings(new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), 0.005f))
-                        .build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 8103167)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES,
+                        AmbientParticle.of(
+                                new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()),
+                                0.005f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC,
+                        new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .build();
     }
 
@@ -318,13 +360,22 @@ public class BiomeBuilders {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.0019f))
                         .waterColor(40447)
-                        .waterFogColor(40447)
-                        .skyColor(7907327)
-                        .fogColor(12638463)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES)).build())
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 40447)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 7907327)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES,
+                        AmbientParticle.of(ParticleTypes.SNOWFLAKE, 0.0019f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC,
+                        new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .build();
     }
 
@@ -355,15 +406,22 @@ public class BiomeBuilders {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.002f))
                         .waterColor(5883291)
-                        .waterFogColor(340786)
-                        .skyColor(8103167)
-                        .fogColor(12638463)
                         .grassColorOverride(7311404)
                         .foliageColorOverride(7311404)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 340786)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 8103167)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES,
+                        AmbientParticle.of(ParticleTypes.SPORE_BLOSSOM_AIR, 0.002f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC,
+                        new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();
     }
 }

@@ -93,15 +93,36 @@ public class FungalCavesPlacedFeatures {
                 FLIP_STEP_2,
                 configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.FLIPPED_SHROOM_CAP),
                 List.of(
-                        CountPlacement.of(170),
-                        CountPlacement.of(120),
+                        CountPlacement.of(4000),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.UP,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.MUSHROOM_STEM)
+                                BlockPredicate.anyOf(
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 2), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 2), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 2), Blocks.RED_CONCRETE),
+
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 1), Blocks.RED_CONCRETE),
+
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 0), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 0), Blocks.RED_CONCRETE),
+
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, -1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, -1), Blocks.RED_CONCRETE),
+
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -2), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -2), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -2), Blocks.RED_CONCRETE)
                                 ),
                                 32
                         ),
@@ -119,7 +140,8 @@ public class FungalCavesPlacedFeatures {
                                 Direction.UP,
                                 BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.RED_CONCRETE),
                                 32
-                        )
+                        ),
+                        BiomeFilter.biome()
                 ));
 
     }

@@ -1,7 +1,7 @@
 package com.thxlotl.cavernouslite.tag;
 
 import com.thxlotl.cavernouslite.CavernousLite;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -18,6 +18,6 @@ public class ModBlockTags {
     public static final TagKey<Block> MAGMA = createTag("magma");
 
     private static TagKey<net.minecraft.world.level.block.Block> createTag(String name) {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(CavernousLite.MODID, name));
+        return BlockTags.create(Identifier.fromNamespaceAndPath(CavernousLite.MODID, name));
     }
 }

@@ -94,25 +94,13 @@ public class CrystalCavesConfiguredFeatures {
 
     private static void registerCrystalFeature(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Direction direction) {
 
-        BlockPos pos = BlockPos.ZERO.relative(direction.getOpposite());
-        Vec3i amethystPos = new Vec3i(pos.getX(), pos.getY(), pos.getZ());
 
-        FeatureUtils.register(context, key, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-                50,
-                8,
-                3,
-                PlacementUtils.inlinePlaced(Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
-                                new WeightedBlockState(smallBud.setValue(BlockStateProperties.FACING, direction), 5),
-                                new WeightedBlockState(medBud.setValue(BlockStateProperties.FACING, direction), 4),
-                                new WeightedBlockState(largeBud.setValue(BlockStateProperties.FACING, direction), 3),
-                                new WeightedBlockState(cluster.setValue(BlockStateProperties.FACING, direction), 2)
-                        ))),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                                BlockPredicate.wouldSurvive(cluster.setValue(BlockStateProperties.FACING, direction), Vec3i.ZERO),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                BlockPredicate.matchesTag(amethystPos, ModBlockTags.AMETHYST)
-                        ))
-        )));
+        FeatureUtils.register(context, key, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(smallBud.setValue(BlockStateProperties.FACING, direction), 5),
+                new WeightedBlockState(medBud.setValue(BlockStateProperties.FACING, direction), 4),
+                new WeightedBlockState(largeBud.setValue(BlockStateProperties.FACING, direction), 3),
+                new WeightedBlockState(cluster.setValue(BlockStateProperties.FACING, direction), 2)
+        ));
     }
 
 }

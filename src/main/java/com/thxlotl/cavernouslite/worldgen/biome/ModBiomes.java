@@ -4,7 +4,7 @@ import com.thxlotl.cavernouslite.CavernousLite;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biome;
 
 public class ModBiomes {
@@ -21,7 +21,7 @@ public class ModBiomes {
 
     private static ResourceKey<Biome> createBiomeKey(String name) {
         return ResourceKey.create(Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(CavernousLite.MODID, name));
+                Identifier.fromNamespaceAndPath(CavernousLite.MODID, name));
     }
 
     // Generate data

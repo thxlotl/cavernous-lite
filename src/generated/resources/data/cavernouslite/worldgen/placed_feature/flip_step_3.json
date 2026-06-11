@@ -50,6 +50,9 @@
         "type": "minecraft:matching_blocks",
         "blocks": "minecraft:red_concrete"
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

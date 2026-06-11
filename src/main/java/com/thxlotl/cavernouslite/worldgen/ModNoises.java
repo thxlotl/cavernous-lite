@@ -4,7 +4,7 @@ import com.thxlotl.cavernouslite.CavernousLite;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 public class ModNoises {
@@ -30,7 +30,7 @@ public class ModNoises {
 
 
     private static ResourceKey<NormalNoise.NoiseParameters> createKey(String key) {
-        return ResourceKey.create(Registries.NOISE, ResourceLocation.fromNamespaceAndPath(CavernousLite.MODID, key));
+        return ResourceKey.create(Registries.NOISE, Identifier.fromNamespaceAndPath(CavernousLite.MODID, key));
     }
     private static void register(
             BootstrapContext<NormalNoise.NoiseParameters> context,

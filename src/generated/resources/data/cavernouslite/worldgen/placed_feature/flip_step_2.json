@@ -3,11 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 170
-    },
-    {
-      "type": "minecraft:count",
-      "count": 120
+      "count": 4000
     },
     {
       "type": "minecraft:in_square"
@@ -29,19 +25,186 @@
       "direction_of_search": "up",
       "max_steps": 32,
       "target_condition": {
-        "type": "minecraft:all_of",
+        "type": "minecraft:any_of",
         "predicates": [
           {
             "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:red_concrete"
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -1,
+              0,
+              2
+            ]
           },
           {
             "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:mushroom_stem",
+            "blocks": "minecraft:red_concrete",
             "offset": [
               0,
+              0,
+              2
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
               1,
+              0,
+              2
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -2,
+              0,
+              1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -1,
+              0,
+              1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              2,
+              0,
+              1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -2,
+              0,
               0
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              2,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -2,
+              0,
+              -1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -1,
+              0,
+              -1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              1,
+              0,
+              -1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              2,
+              0,
+              -1
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              -1,
+              0,
+              -2
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              0,
+              0,
+              -2
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:red_concrete",
+            "offset": [
+              1,
+              0,
+              -2
             ]
           }
         ]
