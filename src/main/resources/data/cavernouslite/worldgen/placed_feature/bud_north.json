@@ -9,6 +9,18 @@
       "type": "minecraft:in_square"
     },
     {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 256
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
+    },
+    {
       "type": "minecraft:environment_scan",
       "direction_of_search": "up",
       "max_steps": 24,
@@ -39,18 +51,6 @@
             "tag": "cavernouslite:amethyst"
           }
         ]
-      }
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "absolute": 256
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
       }
     },
     {

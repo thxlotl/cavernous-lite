@@ -24,6 +24,9 @@ import java.util.List;
 
 public class CrystalCavesPlacedFeatures {
 
+    // Feature direction in name is based on the direction the crystal cluster faces
+    // Bud up: facing=up
+    // Meaning bud up requires down block to be placeable
     public static final ResourceKey<PlacedFeature> BUD_UP    = ModPlacedFeatures.registerKey("bud_up");
     public static final ResourceKey<PlacedFeature> BUD_DOWN  = ModPlacedFeatures.registerKey("bud_down");
     public static final ResourceKey<PlacedFeature> BUD_NORTH = ModPlacedFeatures.registerKey("bud_north");
@@ -37,10 +40,10 @@ public class CrystalCavesPlacedFeatures {
 
         ModPlacedFeatures.register(context, BUD_UP, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_UP), cavePlacementModifers(2000, Direction.DOWN));
         ModPlacedFeatures.register(context, BUD_DOWN, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_DOWN), cavePlacementModifers(2000, Direction.UP));
-        ModPlacedFeatures.register(context, BUD_NORTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_NORTH), cavePlacementModifersNoScan(2000, Direction.NORTH));
-        ModPlacedFeatures.register(context, BUD_EAST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_EAST), cavePlacementModifersNoScan(2000, Direction.EAST));
-        ModPlacedFeatures.register(context, BUD_SOUTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_SOUTH), cavePlacementModifersNoScan(2000, Direction.SOUTH));
-        ModPlacedFeatures.register(context, BUD_WEST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_WEST), cavePlacementModifersNoScan(2000, Direction.WEST));
+        ModPlacedFeatures.register(context, BUD_NORTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_NORTH), cavePlacementModifersNoScan(2000, Direction.SOUTH));
+        ModPlacedFeatures.register(context, BUD_EAST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_EAST), cavePlacementModifersNoScan(2000, Direction.WEST));
+        ModPlacedFeatures.register(context, BUD_SOUTH, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_SOUTH), cavePlacementModifersNoScan(2000, Direction.NORTH));
+        ModPlacedFeatures.register(context, BUD_WEST, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BUD_WEST), cavePlacementModifersNoScan(2000, Direction.EAST));
 
         ModPlacedFeatures.register(context, BIG_GEODE, configuredFeatures.getOrThrow(CrystalCavesConfiguredFeatures.BIG_GEODE), List.of(
                 RarityFilter.onAverageOnceEvery(38),
@@ -53,18 +56,18 @@ public class CrystalCavesPlacedFeatures {
     private static BlockPredicate crystalPlacementPerDirection(Direction direction) {
 
         BlockState cluster = Blocks.AMETHYST_CLUSTER.defaultBlockState();
-        BlockPos pos = BlockPos.ZERO.relative(direction.getOpposite());
+        BlockPos pos = BlockPos.ZERO.relative(direction);
         Vec3i amethystPos = new Vec3i(pos.getX(), pos.getY(), pos.getZ());
 
         return BlockPredicate.allOf(
-                BlockPredicate.wouldSurvive(cluster.setValue(BlockStateProperties.FACING, direction), Vec3i.ZERO),
-                BlockPredicate.matchesBlocks(Blocks.AIR),
+                BlockPredicate.wouldSurvive(cluster.setValue(BlockStateProperties.FACING, direction.getOpposite()), Vec3i.ZERO),
+                BlockPredicate.matchesBlocks(Vec3i.ZERO, Blocks.AIR),
                 BlockPredicate.matchesTag(amethystPos, ModBlockTags.AMETHYST)
         );
 
     }
 
-    public static List<PlacementModifier> cavePlacementModifers(int count, Direction direction) {
+    private static List<PlacementModifier> cavePlacementModifers(int count, Direction direction) {
         return List.of(
                 CountPlacement.of(count),
                 InSquarePlacement.spread(),
@@ -77,16 +80,16 @@ public class CrystalCavesPlacedFeatures {
                 BiomeFilter.biome()
         );
     }
-    public static List<PlacementModifier> cavePlacementModifersNoScan(int count, Direction direction) {
+    private static List<PlacementModifier> cavePlacementModifersNoScan(int count, Direction direction) {
         return List.of(
                 CountPlacement.of(count),
                 InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                 EnvironmentScanPlacement.scanningFor(
                         Direction.UP,
                         crystalPlacementPerDirection(direction),
                         24
                 ),
-                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                 BiomeFilter.biome()
         );
     }

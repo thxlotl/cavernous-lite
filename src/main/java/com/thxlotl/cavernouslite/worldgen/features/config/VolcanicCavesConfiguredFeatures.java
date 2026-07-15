@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatch
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
@@ -65,7 +66,7 @@ public class VolcanicCavesConfiguredFeatures {
                 SimpleStateProvider.simple(Blocks.AIR),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), ConstantInt.of(1), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
-            ).ignoreVines().build()
+            ).belowTrunkProvider(BlockStateProvider.simple(Blocks.BASALT)).ignoreVines().build()
         );
 
     }

@@ -23,13 +23,13 @@
             "Name": "minecraft:sand"
           }
         },
-        "probability": 0.005
+        "probability": 0.0025
       }
     ],
-    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/fog_color": "#d9cc8c",
     "minecraft:visual/fog_end_distance": 85.0,
-    "minecraft:visual/fog_start_distance": 0.0,
-    "minecraft:visual/sky_color": "#7ba4ff",
+    "minecraft:visual/fog_start_distance": 30.0,
+    "minecraft:visual/sky_color": "#be6819",
     "minecraft:visual/sky_light_factor": 0.0,
     "minecraft:visual/water_fog_color": "#050533"
   },
