@@ -47,6 +47,8 @@ public class BuriedJungleConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context,
                                  HolderGetter<ConfiguredFeature<?, ?>> holdergetter) {
 
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+
         FeatureUtils.register(context, BIG_DRIPLEAF, Feature.RANDOM_BOOLEAN_SELECTOR, new RandomBooleanFeatureConfiguration(
                 PlacementUtils.inlinePlaced(
                         Holder.direct(new ConfiguredFeature<>(Feature.RANDOM_BOOLEAN_SELECTOR, new RandomBooleanFeatureConfiguration(
@@ -78,7 +80,7 @@ public class BuriedJungleConfiguredFeatures {
         ));
 
         FeatureUtils.register(context, MUD_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
-                ModBlockTags.MUD,
+                blocks.getOrThrow(ModBlockTags.MUD),
                 SimpleStateProvider.simple(Blocks.MUD),
                 PlacementUtils.inlinePlaced(
                         Holder.direct(new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
@@ -101,7 +103,6 @@ public class BuriedJungleConfiguredFeatures {
         ));
 
 
-        HolderGetter<Block> blockHolderGetter = context.lookup(Registries.BLOCK);
 
         FeatureUtils.register(context, TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.MANGROVE_LOG),
@@ -110,7 +111,7 @@ public class BuriedJungleConfiguredFeatures {
                         ConstantInt.of(1),
                         0,
                         ConstantInt.of(0),
-                        blockHolderGetter.getOrThrow(ModBlockTags.JUNGLE_BRANCH_CAN_GROW_THROUGH)
+                        blocks.getOrThrow(ModBlockTags.JUNGLE_BRANCH_CAN_GROW_THROUGH)
                 ),
                 SimpleStateProvider.simple(Blocks.AZALEA_LEAVES),
                 new CherryFoliagePlacer(
@@ -122,7 +123,8 @@ public class BuriedJungleConfiguredFeatures {
                         0.55f,
                         0.5f
                 ),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.MOSS_BLOCK.defaultBlockState())
         ).decorators(
                 List.of(
                         new LeaveVineDecorator(0.2f),
@@ -137,7 +139,7 @@ public class BuriedJungleConfiguredFeatures {
                         UniformInt.of(2, 5),
                         0.5f,
                         UniformInt.of(2, 5),
-                        blockHolderGetter.getOrThrow(ModBlockTags.JUNGLE_BRANCH_CAN_GROW_THROUGH)
+                        blocks.getOrThrow(ModBlockTags.JUNGLE_BRANCH_CAN_GROW_THROUGH)
                 ),
                 SimpleStateProvider.simple(Blocks.ACACIA_LEAVES),
                 new CherryFoliagePlacer(
@@ -149,7 +151,8 @@ public class BuriedJungleConfiguredFeatures {
                         0.5f,
                         0.25f
                 ),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.MOSS_BLOCK.defaultBlockState())
         ).build());
 
         FeatureUtils.register(context, PATCH, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
@@ -158,7 +161,7 @@ public class BuriedJungleConfiguredFeatures {
         ));
 
         FeatureUtils.register(context, COARSE_DIRT_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
-                ModBlockTags.MOSS_BLOCK,
+                blocks.getOrThrow(ModBlockTags.MOSS_BLOCK),
                 Blocks.COARSE_DIRT,
                 2, 3
         ));

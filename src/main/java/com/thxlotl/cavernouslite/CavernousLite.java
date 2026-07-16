@@ -39,7 +39,7 @@ public class CavernousLite {
 
     private void commonSetup(FMLCommonSetupEvent event) {
 
-        BiolithBiomePlacement.createBiomePlacementsAndSurfaceRules();
+        ///BiolithBiomePlacement.createBiomePlacementsAndSurfaceRules();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

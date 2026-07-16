@@ -1,9 +1,6 @@
 package com.thxlotl.cavernouslite.util;
 
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -47,13 +44,13 @@ public class CFeatureUtil {
     }
 
     public static VegetationPatchConfiguration createSurfaceVegetationPatch(HolderGetter<ConfiguredFeature<?, ?>> holdergetter,
-                                                                            TagKey<Block> tag,
+                                                                            HolderSet<Block> replaceable,
                                                                             Block block,
                                                                             ResourceKey<ConfiguredFeature<?, ?>> featureKey,
                                                                             float vegChance,
                                                                             int rMin, int rMax) {
         return new VegetationPatchConfiguration(
-                tag,
+                replaceable,
                 BlockStateProvider.simple(block),
                 PlacementUtils.inlinePlaced(holdergetter.getOrThrow(featureKey),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
@@ -68,11 +65,11 @@ public class CFeatureUtil {
                 0.75f);
     }
 
-    public static VegetationPatchConfiguration createSurfaceVegetationPatch(TagKey<Block> tag,
+    public static VegetationPatchConfiguration createSurfaceVegetationPatch(HolderSet<Block> replaceable,
                                                                             Block block,
                                                                             int rMin, int rMax) {
         return new VegetationPatchConfiguration(
-                tag,
+                replaceable,
                 BlockStateProvider.simple(block),
                 PlacementUtils.inlinePlaced(Holder.direct(new ConfiguredFeature<>(Feature.NO_OP, NoneFeatureConfiguration.INSTANCE))),
                 CaveSurface.FLOOR,
@@ -91,7 +88,8 @@ public class CFeatureUtil {
                 new ForkingTrunkPlacer(3, 2, 3),
                 SimpleStateProvider.simple(capBlock.defaultBlockState()),
                 new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.MOSS_BLOCK.defaultBlockState())
         )
                 .decorators(List.of(
                         new AttachedToLeavesDecorator(
@@ -126,7 +124,8 @@ public class CFeatureUtil {
                 ),
                 SimpleStateProvider.simple(capBlock.defaultBlockState()),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.MOSS_BLOCK.defaultBlockState())
         )
                 .decorators(List.of(
                         new AttachedToLeavesDecorator(

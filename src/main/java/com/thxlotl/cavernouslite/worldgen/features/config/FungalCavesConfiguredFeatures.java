@@ -8,12 +8,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -64,6 +66,8 @@ public class FungalCavesConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context,
                                  HolderGetter<ConfiguredFeature<?, ?>> holdergetter) {
 
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+
         // Moss Stuff
         FeatureUtils.register(context, MOSS_VEGETATION, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
                 new WeightedBlockState(mossCarpet, 2),
@@ -75,7 +79,7 @@ public class FungalCavesConfiguredFeatures {
 
         FeatureUtils.register(context, MOSS_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
                 holdergetter,
-                ModBlockTags.MOSS_BLOCK,
+                blocks.getOrThrow(ModBlockTags.MOSS_BLOCK),
                 Blocks.MOSS_BLOCK,
                 MOSS_VEGETATION,
                 0.5f,
@@ -91,7 +95,7 @@ public class FungalCavesConfiguredFeatures {
 
         FeatureUtils.register(context, MYCELIUM_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
                 holdergetter,
-                ModBlockTags.MYCELIUM,
+                blocks.getOrThrow(ModBlockTags.MYCELIUM),
                 Blocks.MYCELIUM,
                 MYCELIUM_VEGETATION,
                 0.1f,
@@ -108,7 +112,8 @@ public class FungalCavesConfiguredFeatures {
                 new StraightTrunkPlacer(4, 1, 4),
                 SimpleStateProvider.simple(Blocks.SHROOMLIGHT.defaultBlockState()),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.MOSS_BLOCK.defaultBlockState())
                 ).ignoreVines().build()
         );
 
@@ -148,7 +153,7 @@ public class FungalCavesConfiguredFeatures {
         FeatureUtils.register(context, FLIPPED_SHROOM_STEM, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
                         new BlockColumnConfiguration.Layer(UniformInt.of(4, 10), SimpleStateProvider.simple(Blocks.MUSHROOM_STEM)),
-                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(Blocks.RED_CONCRETE))
+                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(Blocks.CONCRETE.red()))
                 ),
                 Direction.DOWN,
                 BlockPredicate.allOf(

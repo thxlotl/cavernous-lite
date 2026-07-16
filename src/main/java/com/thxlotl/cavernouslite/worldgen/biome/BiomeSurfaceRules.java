@@ -1,9 +1,14 @@
 package com.thxlotl.cavernouslite.worldgen.biome;
 
 import com.thxlotl.cavernouslite.worldgen.ModNoises;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 
@@ -18,24 +23,27 @@ public class BiomeSurfaceRules {
     private static final BlockState dirt = getBlockState(Blocks.DIRT);
     private static final BlockState packedMud = getBlockState(Blocks.PACKED_MUD);
 
-    public static SurfaceRules.RuleSource fungalRules()
+
+
+
+    public static SurfaceRules.RuleSource fungalRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource fungalCaves =
                 SurfaceRules.sequence(
 
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
+                                SurfaceRules.noiseCondition2d(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
                                 SurfaceRules.sequence(
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.noiseCondition(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
+                                                        SurfaceRules.noiseCondition2d(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
                                                         SurfaceRules.state(mycelium))
                                         ),
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR),
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.noiseCondition(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
+                                                        SurfaceRules.noiseCondition2d(ModNoises.FUNGAL_SURFACE, -0.13, 0.15),
                                                         SurfaceRules.state(dirt))
                                         )
                                 )
@@ -43,7 +51,7 @@ public class BiomeSurfaceRules {
                         SurfaceRules.ifTrue(
                                 SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(ModNoises.FUNGAL_SURFACE, -0.23, 0.25),
+                                        SurfaceRules.noiseCondition2d(ModNoises.FUNGAL_SURFACE, -0.23, 0.25),
                                         SurfaceRules.state(packedMud))
                         ),
                         SurfaceRules.ifTrue(
@@ -57,14 +65,14 @@ public class BiomeSurfaceRules {
                 );
 
         return SurfaceRules.ifTrue(
-                SurfaceRules.isBiome(ModBiomes.FUNGAL_CAVES),
+                SurfaceRules.isBiome(biomes, ModBiomes.FUNGAL_CAVES),
                 SurfaceRules.ifTrue(
                         SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
                         fungalCaves
                 ));
     }
 
-    public static SurfaceRules.RuleSource volcanicRules()
+    public static SurfaceRules.RuleSource volcanicRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource volcanicCaves =
                 SurfaceRules.sequence(
@@ -79,15 +87,15 @@ public class BiomeSurfaceRules {
                                 SurfaceRules.stoneDepthCheck(0, true, 3, CaveSurface.FLOOR),
                                 SurfaceRules.sequence(
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.noiseCondition(ModNoises.VOLCANIC, -0.1f, 0.1f),
+                                                SurfaceRules.noiseCondition2d(ModNoises.VOLCANIC, -0.1f, 0.1f),
                                                 SurfaceRules.state(Blocks.MAGMA_BLOCK.defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.noiseCondition(ModNoises.VOLCANIC, -0.2f, 0.2f),
+                                                SurfaceRules.noiseCondition2d(ModNoises.VOLCANIC, -0.2f, 0.2f),
                                                 SurfaceRules.state(Blocks.BASALT.defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.noiseCondition(ModNoises.VOLCANIC, -0.25f, 0.25f),
+                                                SurfaceRules.noiseCondition2d(ModNoises.VOLCANIC, -0.25f, 0.25f),
                                                 SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())
                                         )
                                 )
@@ -95,88 +103,88 @@ public class BiomeSurfaceRules {
                         SurfaceRules.state(Blocks.BLACKSTONE.defaultBlockState())
                 );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.VOLCANIC_CAVES), volcanicCaves);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.VOLCANIC_CAVES), volcanicCaves);
     }
 
-    public static SurfaceRules.RuleSource crystalRules()
+    public static SurfaceRules.RuleSource crystalRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource rule =
                 SurfaceRules.sequence(
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.1f, 0.1f),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.1f, 0.1f),
                                 SurfaceRules.state(Blocks.AMETHYST_BLOCK.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.14f, 0.14f),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.14f, 0.14f),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.18f, 0.18f),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.18f, 0.18f),
                                 SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())
                         )
                 );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.CRYSTAL_CAVES), rule);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.CRYSTAL_CAVES), rule);
     }
 
-    public static SurfaceRules.RuleSource marbledRules()
+    public static SurfaceRules.RuleSource marbledRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource rule =
                 SurfaceRules.sequence(
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.085f, 0.075f),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.085f, 0.075f),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.SCATTERED, -0.1f, 0.1f),
+                                SurfaceRules.noiseCondition2d(ModNoises.SCATTERED, -0.1f, 0.1f),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.state(Blocks.DIORITE.defaultBlockState())
                 );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.MARBLED_CAVES), rule);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.MARBLED_CAVES), rule);
     }
 
-    public static SurfaceRules.RuleSource aridRules()
+    public static SurfaceRules.RuleSource aridRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource rule = SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
                         SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
                         SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.08, 0.08),
+                                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.08, 0.08),
                                         SurfaceRules.state(Blocks.RED_SAND.defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, 0.5, 0.55),
+                                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, 0.5, 0.55),
                                         SurfaceRules.state(Blocks.RED_SAND.defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.55, -0.5),
+                                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.55, -0.5),
                                         SurfaceRules.state(Blocks.RED_SAND.defaultBlockState())
                                 ),
                                 SurfaceRules.state(Blocks.SAND.defaultBlockState())
                         )
                 ),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.1, 0.1),
+                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.1, 0.1),
                         SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState())
                 ),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, 0.5, 0.6),
-                        SurfaceRules.state(Blocks.ORANGE_TERRACOTTA.defaultBlockState())
+                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, 0.5, 0.6),
+                        SurfaceRules.state(Blocks.DYED_TERRACOTTA.orange().defaultBlockState())
                 ),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.6, -0.5),
-                        SurfaceRules.state(Blocks.ORANGE_TERRACOTTA.defaultBlockState())
+                        SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.6, -0.5),
+                        SurfaceRules.state(Blocks.DYED_TERRACOTTA.orange().defaultBlockState())
                 ),
                 SurfaceRules.state(Blocks.TERRACOTTA.defaultBlockState())
         );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ARID_CAVES), rule);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.ARID_CAVES), rule);
     }
 
-    public static SurfaceRules.RuleSource icyRules()
+    public static SurfaceRules.RuleSource icyRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource rule =
                 SurfaceRules.sequence(
@@ -184,11 +192,11 @@ public class BiomeSurfaceRules {
                                 SurfaceRules.stoneDepthCheck(0, true, 2, CaveSurface.FLOOR),
                                 SurfaceRules.sequence(
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.008, 0.008),
+                                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.008, 0.008),
                                                 SurfaceRules.state(Blocks.POWDER_SNOW.defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.085, 0.085),
+                                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.085, 0.085),
                                                 SurfaceRules.state(Blocks.SNOW_BLOCK.defaultBlockState())
                                         )
                                 )
@@ -198,32 +206,32 @@ public class BiomeSurfaceRules {
                                 SurfaceRules.state(Blocks.ICE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.SCATTERED, -0.05, 0.05),
+                                SurfaceRules.noiseCondition2d(ModNoises.SCATTERED, -0.05, 0.05),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.SCATTERED, 0.4, 0.45),
+                                SurfaceRules.noiseCondition2d(ModNoises.SCATTERED, 0.4, 0.45),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.SCATTERED, -0.45, -0.4),
+                                SurfaceRules.noiseCondition2d(ModNoises.SCATTERED, -0.45, -0.4),
                                 SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, -0.5, -0.4),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -0.5, -0.4),
                                 SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())
                         ),
                         SurfaceRules.ifTrue(
-                                SurfaceRules.noiseCondition(ModNoises.STRIPEY, 0.4, 0.5),
+                                SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, 0.4, 0.5),
                                 SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())
                         ),
                         SurfaceRules.state(Blocks.BLUE_ICE.defaultBlockState())
                 );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ICY_CAVES), rule);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.ICY_CAVES), rule);
     }
 
-    public static SurfaceRules.RuleSource jungleRules()
+    public static SurfaceRules.RuleSource jungleRules(HolderGetter<Biome> biomes)
     {
         SurfaceRules.RuleSource rule = SurfaceRules.sequence(
             SurfaceRules.ifTrue(
@@ -232,15 +240,15 @@ public class BiomeSurfaceRules {
                             SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR),
                             SurfaceRules.sequence(
                                     SurfaceRules.ifTrue(
-                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY_SMALL, -0.18, 0.18),
+                                            SurfaceRules.noiseCondition2d(ModNoises.STRIPEY_SMALL, -0.18, 0.18),
                                             SurfaceRules.state(Blocks.MUD.defaultBlockState())
                                     ),
                                     SurfaceRules.ifTrue(
-                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY, -1000, -0.15),
+                                            SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, -1000, -0.15),
                                             SurfaceRules.state(Blocks.MOSS_BLOCK.defaultBlockState())
                                     ),
                                     SurfaceRules.ifTrue(
-                                            SurfaceRules.noiseCondition(ModNoises.STRIPEY, 0.15, 1000),
+                                            SurfaceRules.noiseCondition2d(ModNoises.STRIPEY, 0.15, 1000),
                                             SurfaceRules.state(Blocks.MOSS_BLOCK.defaultBlockState())
                                     )
                             )
@@ -252,6 +260,6 @@ public class BiomeSurfaceRules {
             )
         );
 
-        return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.BURIED_JUNGLE), rule);
+        return SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ModBiomes.BURIED_JUNGLE), rule);
     }
 }

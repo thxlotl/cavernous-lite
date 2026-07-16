@@ -14,6 +14,7 @@ import net.minecraft.world.attribute.AmbientSounds;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Blocks;
@@ -206,7 +207,7 @@ public class BiomeBuilders {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         caveSpawns(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityTypes.DROWNED, 4, 4));
 
         // Build feature generation
         BiomeGenerationSettings.Builder biomeBuilder =

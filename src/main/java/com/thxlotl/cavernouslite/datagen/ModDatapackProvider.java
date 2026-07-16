@@ -1,6 +1,8 @@
 package com.thxlotl.cavernouslite.datagen;
 
 import com.thxlotl.cavernouslite.CavernousLite;
+import com.thxlotl.cavernouslite.worldgen.ModNoiseSettings;
+import com.thxlotl.cavernouslite.worldgen.biome.BiomeSurfaceRules;
 import com.thxlotl.cavernouslite.worldgen.biome.ModBiomes;
 import com.thxlotl.cavernouslite.worldgen.ModNoises;
 import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
@@ -22,6 +24,7 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
             //.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap)
             .add(Registries.NOISE, ModNoises::bootstrap)
+            .add(Registries.NOISE_SETTINGS, ModNoiseSettings::bootstrap)
             ;
 
     public ModDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

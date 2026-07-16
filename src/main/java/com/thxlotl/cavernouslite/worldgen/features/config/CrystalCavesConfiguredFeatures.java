@@ -4,10 +4,8 @@ import com.thxlotl.cavernouslite.tag.ModBlockTags;
 import com.thxlotl.cavernouslite.util.CFeatureUtil;
 import com.thxlotl.cavernouslite.util.WeightedBlockState;
 import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -53,6 +51,8 @@ public class CrystalCavesConfiguredFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+
         registerCrystalFeature(context, BUD_UP, Direction.UP);
         registerCrystalFeature(context, BUD_DOWN, Direction.DOWN);
         registerCrystalFeature(context, BUD_NORTH, Direction.NORTH);
@@ -73,8 +73,8 @@ public class CrystalCavesConfiguredFeatures {
                                 largeBud,
                                 cluster
                         ),
-                        BlockTags.FEATURES_CANNOT_REPLACE,
-                        BlockTags.GEODE_INVALID_BLOCKS
+                        blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE),
+                        blocks.getOrThrow(BlockTags.GEODE_INVALID_BLOCKS)
                 ),
                 new GeodeLayerSettings(2.55, 3.3, 4.8, 6.3),
                 new GeodeCrackSettings(0.95, 3, 2),

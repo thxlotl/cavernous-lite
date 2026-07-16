@@ -99,30 +99,30 @@ public class FungalCavesPlacedFeatures {
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.UP,
                                 BlockPredicate.anyOf(
-                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 2), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 2), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 2), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 2), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 2), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 2), Blocks.CONCRETE.red()),
 
-                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 1), Blocks.CONCRETE.red()),
 
-                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 0), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 0), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, 0), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, 0), Blocks.CONCRETE.red()),
 
-                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, -1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -1), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, -1), Blocks.RED_CONCRETE),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-2, 0, -1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -1), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(2, 0, -1), Blocks.CONCRETE.red()),
 
-                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -2), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -2), Blocks.RED_CONCRETE),
-                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -2), Blocks.RED_CONCRETE)
+                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, -2), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -2), Blocks.CONCRETE.red()),
+                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, -2), Blocks.CONCRETE.red())
                                 ),
                                 32
                         ),
@@ -132,12 +132,12 @@ public class FungalCavesPlacedFeatures {
                 FLIP_STEP_3,
                 Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK)))),
                 List.of(
-                        CountPlacement.of(1000),
+                        CountPlacement.of(3000),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.UP,
-                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.RED_CONCRETE),
+                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.CONCRETE.red()),
                                 32
                         ),
                         BiomeFilter.biome()

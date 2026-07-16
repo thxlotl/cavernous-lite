@@ -70,7 +70,8 @@ public class AridCavesConfiguredFeatures {
                         new GiantTrunkPlacer(2, 4, 0),
                         SimpleStateProvider.simple(Blocks.RED_SANDSTONE),
                         new FancyFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 1),
-                        new TwoLayersFeatureSize(0, 0, 0)
+                        new TwoLayersFeatureSize(0, 0, 0),
+                    SimpleStateProvider.simple(Blocks.TERRACOTTA)
                 )
                 .belowTrunkProvider(BlockStateProvider.simple(Blocks.TERRACOTTA))
                 .decorators(
@@ -100,7 +101,8 @@ public class AridCavesConfiguredFeatures {
                                 ConstantInt.of(0),
                                 UniformInt.of(1, 2),
                                 256),
-                        new TwoLayersFeatureSize(0, 0, 0)
+                        new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.TERRACOTTA)
                 )
                 .belowTrunkProvider(BlockStateProvider.simple(Blocks.TERRACOTTA))
                         .decorators(
@@ -137,7 +139,8 @@ public class AridCavesConfiguredFeatures {
                         new AcaciaFoliagePlacer(
                                 ConstantInt.of(0), ConstantInt.of(0)
                         ),
-                        new TwoLayersFeatureSize(0, 0, 0)
+                        new TwoLayersFeatureSize(0, 0, 0),
+                        SimpleStateProvider.simple(Blocks.SAND)
                 )
                 .ignoreVines()
                 .build()

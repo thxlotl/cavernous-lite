@@ -3,6 +3,8 @@ package com.thxlotl.cavernouslite.worldgen.features.config;
 import com.thxlotl.cavernouslite.tag.ModBlockTags;
 import com.thxlotl.cavernouslite.worldgen.features.ModConfiguredFeatures;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -36,8 +38,11 @@ public class VolcanicCavesConfiguredFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
+
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+
         FeatureUtils.register(context, LAVA_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
-                ModBlockTags.MAGMA,
+                blocks.getOrThrow(ModBlockTags.MAGMA),
                 SimpleStateProvider.simple(Blocks.MAGMA_BLOCK),
                 PlacementUtils.inlinePlaced(
                         Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LAVA))))
@@ -65,7 +70,8 @@ public class VolcanicCavesConfiguredFeatures {
                 new ForkingTrunkPlacer(4, 1, 1),
                 SimpleStateProvider.simple(Blocks.AIR),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), ConstantInt.of(1), 0),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(0, 0, 0),
+                SimpleStateProvider.simple(Blocks.BASALT)
             ).belowTrunkProvider(BlockStateProvider.simple(Blocks.BASALT)).ignoreVines().build()
         );
 
