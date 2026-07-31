@@ -1,6 +1,7 @@
 package com.thxlotl.cavernouslite;
 
-import com.thxlotl.cavernouslite.worldgen.biome.BiolithBiomePlacement;
+import com.thxlotl.cavernouslite.worldgen.biome.terrablender.ModRegions;
+import com.thxlotl.cavernouslite.worldgen.biome.terrablender.TerrablenderBiomePlacement;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -32,6 +33,9 @@ public class CavernousLite {
         // Note that this is necessary if and only if we want *this* class (CavernousLite) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+
+        TerrablenderBiomePlacement.registerSurfaceRules();
+        ModRegions.register();
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

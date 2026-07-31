@@ -1,7 +1,7 @@
 package com.thxlotl.cavernouslite.worldgen.biome;
 
-import com.terraformersmc.biolith.api.biome.BiomePlacement;
-import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
+//import com.terraformersmc.biolith.api.biome.BiomePlacement;
+//import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import com.thxlotl.cavernouslite.worldgen.ModNoiseSettings;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
@@ -44,11 +44,11 @@ public class BiolithBiomePlacement {
 
     private static void addClimateParameterList(ResourceKey<Biome> biome, List<Climate.ParameterPoint> points) {
         for (Climate.ParameterPoint point : points) {
-            BiomePlacement.addOverworld(biome, point);
+            //BiomePlacement.addOverworld(biome, point);
         }
     }
 
     private static void addSurfaceRule(SurfaceRules.RuleSource ruleSource) {
-        SurfaceGeneration.addOverworldSurfaceRules(overworldRules, ruleSource);
+        //SurfaceGeneration.addOverworldSurfaceRules(overworldRules, ruleSource);
     }
 }

@@ -24,7 +24,6 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
             //.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap)
             .add(Registries.NOISE, ModNoises::bootstrap)
-            .add(Registries.NOISE_SETTINGS, ModNoiseSettings::bootstrap)
             ;
 
     public ModDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

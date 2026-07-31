@@ -1,6 +1,6 @@
 package com.thxlotl.cavernouslite.worldgen;
 
-import com.terraformersmc.biolith.impl.Biolith;
+//import com.terraformersmc.biolith.impl.Biolith;
 import com.thxlotl.cavernouslite.worldgen.biome.BiolithBiomePlacement;
 import com.thxlotl.cavernouslite.worldgen.biome.BiomeSurfaceRules;
 import net.minecraft.core.HolderGetter;
@@ -22,7 +22,6 @@ public class ModNoiseSettings {
 
     public static void bootstrap(BootstrapContext<?> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
-
 
         FUNGAL_RULES = BiomeSurfaceRules.fungalRules(biomes);
         ARID_RULES = BiomeSurfaceRules.aridRules(biomes);
